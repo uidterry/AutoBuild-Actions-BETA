@@ -138,6 +138,7 @@ EOF
 		esac
 	;;
 	immortalwrt/immortalwrt*)
+		AddPackage other immortalwrt-collections packages master
 		case "${TARGET_PROFILE}" in
 		x86_64)
 			sed -i -- 's:/bin/ash:'/bin/bash':g' ${BASE_FILES}/etc/passwd
