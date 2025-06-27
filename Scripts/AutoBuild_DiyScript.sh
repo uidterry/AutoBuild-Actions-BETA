@@ -12,7 +12,7 @@ Firmware_Diy_Core() {
 	# ${OP_BRANCH}			OpenWrt 源码分支
 	# ${CONFIG_FILE}		配置文件
 	
-	Author=AUTO
+	Author=早
 	# 作者名称, AUTO: [自动识别]
 	
 	Author_URL=AUTO
@@ -21,7 +21,7 @@ Firmware_Diy_Core() {
 	Default_Flag=AUTO
 	# 固件标签 (名称后缀), 适用不同配置文件, AUTO: [自动识别]
 	
-	Default_IP="192.168.1.1"
+	Default_IP="192.168.1.88"
 	# 固件 IP 地址
 	
 	Default_Title="Powered by AutoBuild-Actions"
