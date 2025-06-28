@@ -223,10 +223,12 @@ jobs:
       if: env.UPLOAD_RELEASES == 'true' && env.Compile_Result == 'true' && !cancelled()
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: openwrt/bin/Firmware/*
+        # 修改这里，直接从原始路径上传两个关键文件
+        file: openwrt/bin/targets/ramips/mt7621/*{sysupgrade,initramfs-kernel}.bin
         file_glob: true
         tag: AutoUpdate
         overwrite: true
+        body: "小米 AC2100 固件自动编译于 $(date +%Y年%m月%d日%H时%M分)"
         
     - name: Download Github API
       if: env.UPLOAD_RELEASES == 'true' && env.Compile_Result == 'true' && !cancelled()
