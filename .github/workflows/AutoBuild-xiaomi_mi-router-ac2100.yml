@@ -197,12 +197,12 @@ jobs:
         make -j$(nproc) || make -j1 V=s
         [ "$?" == 0 ] && echo "Compile_Result=true" >> $GITHUB_ENV || echo "Compile_Result=false" >> $GITHUB_ENV
 
-    - name: Checkout Firmware
-      if: env.Compile_Result == 'true' && !cancelled()
-      run: |
-        cd openwrt
-        source $GITHUB_WORKSPACE/Scripts/AutoBuild_Function.sh
-        Firmware_Diy_End
+    # - name: Checkout Firmware
+    #   if: env.Compile_Result == 'true' && !cancelled()
+    #   run: |
+    #     cd openwrt
+    #     source $GITHUB_WORKSPACE/Scripts/AutoBuild_Function.sh
+    #     Firmware_Diy_End
 
     - name: Upload Firmware to Artifacts
       uses: actions/upload-artifact@main
@@ -224,7 +224,8 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         # 修改这里，直接从原始路径上传两个关键文件
-        file: openwrt/bin/targets/ramips/mt7621/*{sysupgrade,initramfs-kernel}.bin
+        # file: openwrt/bin/targets/ramips/mt7621/*{sysupgrade,initramfs-kernel}.bin
+        file: openwrt/bin/targets/ramips/mt7621/*-xiaomi_mi-router-ac2100-*.bin
         file_glob: true
         tag: AutoUpdate
         overwrite: true
