@@ -154,15 +154,27 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Accelerate
+    # - name: Accelerate
+    #   if: env.CACHE_ACCELERATE == 'true'
+    #   uses: klever1988/cachewrtbuild@main
+    #   with:
+    #     ccache: true
+    #     toolchain: true
+    #     skip: true
+    #     clean: true
+    #     prefix: ${{ github.workspace }}/openwrt
+
+    - name: Cache Build
       if: env.CACHE_ACCELERATE == 'true'
-      uses: klever1988/cachewrtbuild@main
+      uses: actions/cache@v4
       with:
-        ccache: true
-        toolchain: true
-        skip: true
-        clean: true
-        prefix: ${{ github.workspace }}/openwrt
+        path: |
+          openwrt/staging_dir
+          openwrt/tmp
+          openwrt/dl
+        key: ${{ runner.os }}-openwrt-${{ env.CONFIG_FILE }}-${{ hashFiles('openwrt/.config') }}
+        restore-keys: |
+          ${{ runner.os }}-openwrt-${{ env.CONFIG_FILE }}-
 
     - name: Run Diy Scripts
       run: |
