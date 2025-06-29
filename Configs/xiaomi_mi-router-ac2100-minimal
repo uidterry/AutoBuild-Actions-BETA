@@ -1,0 +1,52 @@
+#==============================================================
+# Target: Xiaomi AC2100 - Minimal Config
+#==============================================================
+CONFIG_TARGET_ramips=y
+CONFIG_TARGET_ramips_mt7621=y
+CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-ac2100=y
+
+#==============================================================
+# Core System Settings
+#==============================================================
+# IPv6 Support
+CONFIG_IPV6=y
+CONFIG_KERNEL_IPV6=y
+CONFIG_PACKAGE_ipv6helper=y
+CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
+
+# WiFi Drivers (Essential)
+CONFIG_PACKAGE_kmod-mt7603=y
+CONFIG_PACKAGE_kmod-mt7615e=y
+
+#==============================================================
+# LuCI Plugins (Minimal Set)
+#==============================================================
+# --- Scientific Internet Access ---
+CONFIG_PACKAGE_luci-app-passwall2=y
+
+# --- System Management ---
+CONFIG_PACKAGE_luci-app-ttyd=y # TTYD Terminal
+
+#==============================================================
+# LuCI Core & Theme
+#==============================================================
+CONFIG_PACKAGE_luci-ssl-openssl=y
+CONFIG_PACKAGE_luci-theme-bootstrap=y # Default stable theme
+CONFIG_PACKAGE_luci-mod-admin-full=y
+CONFIG_PACKAGE_luci-base=y
+
+#==============================================================
+# Language Support (Chinese)
+#==============================================================
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=y
+
+#==============================================================
+# Basic Packages & Dependencies
+#==============================================================
+CONFIG_PACKAGE_wpad-openssl=y
+CONFIG_PACKAGE_dnsmasq-full=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_wget-ssl=y

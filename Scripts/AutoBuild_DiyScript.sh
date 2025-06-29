@@ -78,6 +78,7 @@ Firmware_Diy() {
 	coolsnowwolf/lede:master)
 		cat >> ${Version_File} <<EOF
 sed -i '/check_signature/d' /etc/opkg.conf
+sed -i "s/192.168.1.1/${Default_IP}/g" package/lean/default-settings/files/zzz-default-settings
 if [ -z "\$(grep "REDIRECT --to-ports 53" /etc/firewall.user 2> /dev/null)" ]
 then
 	echo '# iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53' >> /etc/firewall.user
