@@ -1,5 +1,5 @@
 #==============================================================
-# Target: Xiaomi AC2100 - SSR-Plus Minimal Config
+# Target: Xiaomi AC2100 - SSR-Plus Minimal Config (with Xray)
 #==============================================================
 CONFIG_TARGET_ramips=y
 CONFIG_TARGET_ramips_mt7621=y
@@ -26,9 +26,12 @@ CONFIG_KERNEL_DEBUG_INFO=n
 CONFIG_KERNEL_DEBUG_KERNEL=n
 
 #==============================================================
-# LuCI Plugins (SSR-Plus Minimal Set)
+# LuCI Plugins (SSR-Plus Minimal Set with Xray)
 #==============================================================
 CONFIG_PACKAGE_luci-app-ssr-plus=y
+
+# --- Add Xray Core for VLESS/VMess Support ---
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
 
 # --- System Management ---
 CONFIG_PACKAGE_luci-app-ttyd=y # TTYD Terminal
@@ -48,6 +51,7 @@ CONFIG_PACKAGE_luci-base=y
 CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y # 添加 SSR-Plus 的中文包
 
 #==============================================================
 # Basic Packages & Dependencies
