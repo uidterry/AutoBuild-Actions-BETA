@@ -1,5 +1,5 @@
 #==============================================================
-# Target: Xiaomi AC2100 - Passwall Minimal Config
+# Target: Xiaomi AC2100 - Passwall Minimal Config (with Full Protocol Support)
 #==============================================================
 CONFIG_TARGET_ramips=y
 CONFIG_TARGET_ramips_mt7621=y
@@ -26,9 +26,16 @@ CONFIG_KERNEL_DEBUG_INFO=n
 CONFIG_KERNEL_DEBUG_KERNEL=n
 
 #==============================================================
-# LuCI Plugins (Passwall Minimal Set)
+# LuCI Plugins (Passwall with Full Protocol Support)
 #==============================================================
 CONFIG_PACKAGE_luci-app-passwall=y
+
+# --- Add Protocol Support Modules for Passwall ---
+# This section enables support for VLESS, VMess, Trojan, etc.
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
+# --- End of Protocol Support Modules ---
 
 # --- System Management ---
 CONFIG_PACKAGE_luci-app-ttyd=y # TTYD Terminal
