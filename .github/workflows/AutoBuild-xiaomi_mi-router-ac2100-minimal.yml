@@ -146,9 +146,18 @@ jobs:
         sudo -E apt-get clean
         sudo timedatectl set-timezone "Asia/Shanghai"
 
+    # - name: Clone Openwrt Source Code
+    #   run: |
+    #     git clone -b $REPO_BRANCH $REPO_URL openwrt
+    #     ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+    #     cd openwrt
+    #     ./scripts/feeds update -a
+    #     ./scripts/feeds install -a
+
     - name: Clone Openwrt Source Code
       run: |
         git clone -b $REPO_BRANCH $REPO_URL openwrt
+        (cd openwrt && git checkout a0abbf4266f0c3b5414ee01dd4dfff8d53773b69) # <--- 在这里新加一行，并替换为您选择的 HASH
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         ./scripts/feeds update -a
